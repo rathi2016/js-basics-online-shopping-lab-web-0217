@@ -12,7 +12,6 @@ function total() {
       t += cart[i][item]
     }
   }
-
   return t
 };
 
@@ -35,15 +34,19 @@ the function should print out "Your shopping cart is empty.". */
 
 
 function viewCart() {
+  const itemsAndPrices = []
+
   if (!cart.length) {
   return console.log("Your shopping cart is empty.")
   }
-  for (var i = 0,l = cart.length; i<l ; i++){
-    for (var ItemPrice in cart[i][0]) {
 
-       console.log(`In your cart, you have ${cart[i][0]} at ${ItemPrice}.`)
+  for (var i = 0,l = cart.length; i<l ; i++){
+    for (var ItemPrice in cart[i]) {
+      itemsAndPrices.push(`${Object.keys(cart[i])[0]} at \$${cart[i][Object.keys(cart[i])[0]]}`)
     }
   }
+  console.log(`In your cart, you have ${itemsAndPrices.join(', ')}.`)
+
 };
 
 //  stack over flow : someArray.splice(x,1);
